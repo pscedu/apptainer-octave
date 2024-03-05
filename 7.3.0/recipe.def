@@ -1,0 +1,19 @@
+Bootstrap: docker
+From: gnuoctave/octave:7.3.0
+
+%labels
+    MAINTAINER icaoberg
+    EMAIL icaoberg@psc.edu
+    SUPPORT help@psc.edu
+    WEBSITE http://github.com/pscedu/apptainer-octave
+    COPYRIGHT Copyright © 2022-2024, Pittsburgh Supercomputing Center. All Rights Reserved.
+    VERSION 7.3.0
+
+%post
+    apt-get update
+    apt-get install -y gnuplot
+    apt-get clean
+    apt-get autoclean
+
+%runscript
+    octave-cli "$@"
